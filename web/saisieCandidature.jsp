@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Saisie candidature</h1>
-        <form action="saisieCandidatureServlet" method="post">
+        <form action="TestServlet" method="post">
             Nom : <input type="text" name="nom"/> <br/>
             Prénom : <input type="text" name="prenom"/> <br/>
             Téléphone : <input type="text" name="telephone"/> <br/>
@@ -22,6 +22,7 @@
             Diplomes : <input type="text" name="diplome"/> <br/>
             Compétences : <input type="text" name="competence"/> <br/>
             Situation professionnelle : <input type="text" name="situationPro"/> <br/>
+            <input type="hidden"  name="choix"  value="4">
             <input type="submit" name="inscrire" value="valider"/>
         </form>
     </body>
