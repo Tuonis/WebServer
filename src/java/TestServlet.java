@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,6 +30,8 @@ public class TestServlet extends HttpServlet {
 
     private final String CANDIDAT = "http://localhost:8080/Candidature/candidats/";
     private final String CANDIDATURE = "http://localhost:8080/Candidature/candidature/idCandidat=";
+    private final String PROMOCANDIDATURE="http://localhost:8080/Candidature/candidatures/promotion=";
+    private final String ETATCANDIDATURE="http://localhost:8080/Candidature/candidatures/etat=";
 
     /**
      * Processes requests for both HTTP
@@ -109,9 +112,21 @@ public class TestServlet extends HttpServlet {
                 try {// Preparer l'appel au service Web distant
                     resource = new ClientResource(url);
                     // Recuperer la reponse en arbre DOM
-                    Document doc = resource.get(Document.class);
+                    DomRepresentation reponse = new DomRepresentation(resource.get());
+                    Document doc=reponse.getDocument();
                     // Le mettre en post-it de la requete pour le passer a la jsp
+                    //request.setAttribute("dom", doc);
+                    NodeList candidatures=doc.getElementsByTagName("infoCandidature");
                     request.setAttribute("dom", doc);
+                    NodeList candi=doc.getElementsByTagName("infoCandidat"); 
+                    Element node=(Element)candi.item(0);
+                    request.setAttribute("nom", node.getAttribute("nom"));
+                    request.setAttribute("prenom", node.getAttribute("prenom"));
+                    request.setAttribute("telephone", node.getAttribute("telephone"));
+                    request.setAttribute("adresse", node.getAttribute("adresse"));
+                    request.setAttribute("mail", node.getAttribute("mail"));
+                    
+                    
                 } catch (ResourceException exc) {
                     out.println("Erreur : " + exc.getStatus().getCode() + " ("
                             + exc.getStatus().getDescription() + ") : "
@@ -125,6 +140,35 @@ public class TestServlet extends HttpServlet {
 
             case 3:
 
+                String promo = request.getParameter("promo");
+                String etat = request.getParameter("etat");
+                String url3="";
+                if(!promo.equals("")){
+                    url3 = PROMOCANDIDATURE + promo;
+                }
+                if(!etat.equals("")){
+                    url3 = ETATCANDIDATURE + etat;
+                }
+                ClientResource resource3 = null;
+                try {// Preparer l'appel au service Web distant
+                    resource3 = new ClientResource(url3);
+                    // Recuperer la reponse en arbre DOM
+                    DomRepresentation reponse = new DomRepresentation(resource3.get());
+                    Document doc=reponse.getDocument();
+                    // Le mettre en post-it de la requete pour le passer a la jsp
+                    //request.setAttribute("dom", doc);
+                    NodeList candidatures=doc.getElementsByTagName("infoCandidature");
+                    request.setAttribute("dom", doc);
+                    
+                    
+                } catch (ResourceException exc) {
+                    out.println("Erreur : " + exc.getStatus().getCode() + " ("
+                            + exc.getStatus().getDescription() + ") : "
+                            + resource3.getResponseEntity().getText());
+                }
+                RequestDispatcher rd4 = request.getRequestDispatcher("candidature2.jsp");
+                rd4.forward(request, response);
+               
                 break;
 
             case 4:
