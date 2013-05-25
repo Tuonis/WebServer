@@ -179,6 +179,7 @@ public class TestServlet extends HttpServlet {
                 break;
 
             case 4:
+                String id = request.getParameter("id");
                 String nom = request.getParameter("nom");
                 String prenom = request.getParameter("prenom");
                 String tel = request.getParameter("telephone");
@@ -189,7 +190,7 @@ public class TestServlet extends HttpServlet {
                 String situationPro = request.getParameter("situationPro");
                 String url5 = CANDIDAT;
                 ClientResource resource5 = new ClientResource(url5);
-                Form form = new Form("nom=" + nom + "&prenom=" + prenom + "&tel=" + tel + "&mail=" + mail1 + "&adresse=" + adresse + "&diplome=" + diplome + "&competence=" + competence + "&situationPro=" + situationPro);
+                Form form = new Form("id=" + id + "&nom=" + nom + "&prenom=" + prenom + "&tel=" + tel + "&mail=" + mail1 + "&adresse=" + adresse + "&diplome=" + diplome + "&competence=" + competence + "&situationPro=" + situationPro);
                 form.encode(CharacterSet.UTF_8);
                 Representation rep = form.getWebRepresentation();
                 resource5.put(rep);
