@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>ServletsaisieCandidature</servlet-name>
-        <servlet-class>Servlet.ServletsaisieCandidature</servlet-class>
+        <servlet-class>Servlet.ServletSaisieCandidat</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletInscriptionCandidat</servlet-name>
@@ -31,6 +31,10 @@
     <servlet>
         <servlet-name>ServletDispatcher</servlet-name>
         <servlet-class>Servlet.ServletDispatcher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletSaisieCandidature</servlet-name>
+        <servlet-class>Servlet.ServletSaisieCandidature</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServletDispatcher</servlet-name>
         <url-pattern>/ServletDispatcher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSaisieCandidature</servlet-name>
+        <url-pattern>/ServletSaisieCandidature</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

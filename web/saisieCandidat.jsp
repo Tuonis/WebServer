@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Saisie candidature</h1>
-        <form action="ServletsaisieCandidature" method="post">
+        <form action="ServletSaisieCandidat" method="post">
             <x:forEach select="$dom/infosCandidature/infoCandidat" var="infos">
                 Nom : <input type="text" name="nom" value="<x:out select="$infos/@nom"/>"/> <br/>
                 Prénom : <input type="text" name="prenom" value="<x:out select="$infos/@prenom"/>"/> <br/>
