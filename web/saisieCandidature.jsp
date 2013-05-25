@@ -25,6 +25,7 @@
                 Diplomes : <input type="text" name="diplome" value="<x:out select="$infos/@diplomes"/>"/> <br/>
                 Compétences : <input type="text" name="competence" value="<x:out select="$infos/@competences"/>"/> <br/>
                 Situation professionnelle : <input type="text" name="situationPro" value="<x:out select="$infos/@situation"/>"/> <br/>
+                <input type="hidden" name="id" value="<x:out select="$infos/@id"/>"/>
             </x:forEach>
             <input type="hidden"  name="choix"  value="4">
             <input type="submit" name="inscrire" value="valider"/>

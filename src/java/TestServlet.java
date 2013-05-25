@@ -30,11 +30,11 @@ import org.w3c.dom.NodeList;
  */
 public class TestServlet extends HttpServlet {
 
-    private final String CANDIDAT = "http://localhost:8080/Candidature/candidat";
-    private final String CANDIDATS = "http://localhost:8080/Candidature/candidats/";
-    private final String CANDIDATURE = "http://localhost:8080/Candidature/candidature/idCandidat=";
-    private final String PROMOCANDIDATURE = "http://localhost:8080/Candidature/candidatures/promotion=";
-    private final String ETATCANDIDATURE = "http://localhost:8080/Candidature/candidatures/etat=";
+    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
+    private final String CANDIDATS = "http://localhost:8080/WebService/candidats/";
+    private final String CANDIDATURE = "http://localhost:8080/WebService/candidature/idCandidat=";
+    private final String PROMOCANDIDATURE = "http://localhost:8080/WebService/candidatures/promotion=";
+    private final String ETATCANDIDATURE = "http://localhost:8080/WebService/candidatures/etat=";
 
     /**
      * Processes requests for both HTTP
@@ -195,12 +195,29 @@ public class TestServlet extends HttpServlet {
                 resource5.put(rep);
                 break;
                 
-                case 5:
+            case 5:
                 HttpSession s=request.getSession();
                 Document d=(Document) s.getAttribute("dom");
                 request.setAttribute("dom", d);
                 RequestDispatcher rd5 = request.getRequestDispatcher("saisieCandidature.jsp");
                 rd5.forward(request, response);
+                break;
+                
+            case 6:
+                String nom2 = request.getParameter("nom");
+                String prenom2 = request.getParameter("prenom");
+                String tel2 = request.getParameter("telephone");
+                String mail2 = request.getParameter("mail");
+                String adresse2 = request.getParameter("adresse");
+                String diplome2 = request.getParameter("diplome");
+                String competence2 = request.getParameter("competence");
+                String situationPro2 = request.getParameter("situationPro");
+                String url6 = CANDIDAT;
+                ClientResource resource6 = new ClientResource(url6);
+                Form form2 = new Form("nom=" + nom2 + "&prenom=" + prenom2 + "&tel=" + tel2 + "&mail=" + mail2 + "&adresse=" + adresse2 + "&diplome=" + diplome2 + "&competence=" + competence2 + "&situationPro=" + situationPro2);
+                form2.encode(CharacterSet.UTF_8);
+                Representation rep2 = form2.getWebRepresentation();
+                resource6.post(rep2);
                 break;
         }
 
