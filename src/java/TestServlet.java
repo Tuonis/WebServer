@@ -31,6 +31,7 @@ import org.w3c.dom.NodeList;
 public class TestServlet extends HttpServlet {
 
     private final String CANDIDAT = "http://localhost:8080/Candidature/candidat";
+    private final String CANDIDATS = "http://localhost:8080/Candidature/candidats/";
     private final String CANDIDATURE = "http://localhost:8080/Candidature/candidature/idCandidat=";
     private final String PROMOCANDIDATURE = "http://localhost:8080/Candidature/candidatures/promotion=";
     private final String ETATCANDIDATURE = "http://localhost:8080/Candidature/candidatures/etat=";
@@ -107,7 +108,7 @@ public class TestServlet extends HttpServlet {
             case 2:
                 String mail = request.getParameter("mail");
                 String pass = request.getParameter("pass");
-                String url = CANDIDAT + "email=" + mail + "&mdp=" + pass;
+                String url = CANDIDATS + "email=" + mail + "&mdp=" + pass;
                 out.println("URL : " + url);
                 ClientResource resource = null;
                 try {// Preparer l'appel au service Web distant
@@ -126,6 +127,11 @@ public class TestServlet extends HttpServlet {
                     request.setAttribute("telephone", node.getAttribute("telephone"));
                     request.setAttribute("adresse", node.getAttribute("adresse"));
                     request.setAttribute("mail", node.getAttribute("mail"));
+                    
+                    
+                    HttpSession session=request.getSession();
+                    session.setAttribute("dom", doc);
+                    session.setAttribute("id", node.getAttribute("id"));
 
 
                 } catch (ResourceException exc) {
@@ -186,7 +192,15 @@ public class TestServlet extends HttpServlet {
                 Form form = new Form("nom=" + nom + "&prenom=" + prenom + "&tel=" + tel + "&mail=" + mail1 + "&adresse=" + adresse + "&diplome=" + diplome + "&competence=" + competence + "&situationPro=" + situationPro);
                 form.encode(CharacterSet.UTF_8);
                 Representation rep = form.getWebRepresentation();
-                resource5.post(rep);
+                resource5.put(rep);
+                break;
+                
+                case 5:
+                HttpSession s=request.getSession();
+                Document d=(Document) s.getAttribute("dom");
+                request.setAttribute("dom", d);
+                RequestDispatcher rd5 = request.getRequestDispatcher("saisieCandidature.jsp");
+                rd5.forward(request, response);
                 break;
         }
 
