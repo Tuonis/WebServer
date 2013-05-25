@@ -8,6 +8,30 @@
         <servlet-name>saisieCandidatureServlet</servlet-name>
         <servlet-class>saisieCandidatureServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletRenvoiMdp</servlet-name>
+        <servlet-class>Servlet.ServletRenvoiMdp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListeCandidatureByCandidat</servlet-name>
+        <servlet-class>Servlet.ServletListeCandidatureByCandidat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletlisteCandidatureByPromoEtat</servlet-name>
+        <servlet-class>Servlet.ServletlisteCandidatureByPromoEtat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletsaisieCandidature</servlet-name>
+        <servlet-class>Servlet.ServletsaisieCandidature</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletInscriptionCandidat</servlet-name>
+        <servlet-class>Servlet.ServletInscriptionCandidat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDispatcher</servlet-name>
+        <servlet-class>Servlet.ServletDispatcher</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -15,6 +39,30 @@
     <servlet-mapping>
         <servlet-name>saisieCandidatureServlet</servlet-name>
         <url-pattern>/saisieCandidatureServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletRenvoiMdp</servlet-name>
+        <url-pattern>/ServletRenvoiMdp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListeCandidatureByCandidat</servlet-name>
+        <url-pattern>/ServletListeCandidatureByCandidat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletlisteCandidatureByPromoEtat</servlet-name>
+        <url-pattern>/ServletlisteCandidatureByPromoEtat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletsaisieCandidature</servlet-name>
+        <url-pattern>/ServletsaisieCandidature</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInscriptionCandidat</servlet-name>
+        <url-pattern>/ServletInscriptionCandidat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDispatcher</servlet-name>
+        <url-pattern>/ServletDispatcher</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : choixCandidature
-    Created on : 24 mai 2013, 21:17:49
+    Document   : consulter
+    Created on : 20 mai 2013, 15:30:42
     Author     : Kentish
 --%>
 
@@ -15,10 +15,10 @@
         <h1>Consulter les candidatures</h1>
         <div class="formu">
             <h2>Authentification</h2>
-            <form action="TestServlet" method="post">
-                <label>Promotion </label><input name="promo" type="text">
-                <label>Etat</label><input name="etat" type="text" /> <br/><br/>
-                <input type="hidden"  name="choix"  value="3">
+            <form action="ServletListeCandidatureByCandidat" method="post">
+                <label>Email </label><input name="mail" type="text">
+                <label>Mot de passe</label><input name="pass" type="password" /> <br/><br/>
+                <input type="hidden"  name="choix"  value="2">
                 <div class="block" id="pale-blue">
                     <input name="cal" type="submit" value="connect" />
                 </div>

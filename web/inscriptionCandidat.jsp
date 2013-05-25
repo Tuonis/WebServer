@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Saisie candidature</h1>
-        <form action="TestServlet" method="post">
+        <form action="ServletInscriptionCandidat" method="post">
             Nom : <input type="text" name="nom"/> <br/>
             Prénom : <input type="text" name="prenom"/> <br/>
             Téléphone : <input type="text" name="telephone"/> <br/>

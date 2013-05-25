@@ -1,6 +1,6 @@
 <%-- 
-    Document   : mdp
-    Created on : 20 mai 2013, 16:02:15
+    Document   : choixCandidature
+    Created on : 24 mai 2013, 21:17:49
     Author     : Kentish
 --%>
 
@@ -9,15 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Mot de passe oublié</title>
+        <title>Authentification</title>
     </head>
     <body>
-        <h1>Mot de passe oublié</h1>
+        <h1>Consulter les candidatures</h1>
         <div class="formu">
             <h2>Authentification</h2>
-            <form action="TestServlet" method="post">
-                <label>Email </label><input name="mail" type="text">
-                <input type="hidden"  name="choix"  value="1">
+            <form action="ServletlisteCandidatureByPromoEtat" method="post">
+                <label>Promotion </label><input name="promo" type="text">
+                <label>Etat</label><input name="etat" type="text" /> <br/><br/>
+                <input type="hidden"  name="choix"  value="3">
                 <div class="block" id="pale-blue">
                     <input name="cal" type="submit" value="connect" />
                 </div>

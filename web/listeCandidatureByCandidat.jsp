@@ -52,7 +52,7 @@
                  </tr>
              </x:forEach>--%>
         </table>
-        <form action="TestServlet" method="post">
+        <form action="ServletDispatcher" method="post">
                 <input type="hidden"  name="choix"  value="5">
                 <div class="block" id="pale-blue">
                     <input name="cal" type="submit" value="Faire une nouvelle candidature" />
