@@ -11,10 +11,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Saisie Candidature</title>
+        <title>Saisie Candidat</title>
     </head>
     <body>
-        <h1>Saisie candidature</h1>
+        <h1>Saisie candidat</h1>
         <form action="ServletSaisieCandidat" method="post">
             <x:forEach select="$dom/infosCandidature/infoCandidat" var="infos">
                 Nom : <input type="text" name="nom" value="<x:out select="$infos/@nom"/>"/> <br/>

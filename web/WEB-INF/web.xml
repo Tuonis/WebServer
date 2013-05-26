@@ -5,10 +5,6 @@
         <servlet-class>TestServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>saisieCandidatureServlet</servlet-name>
-        <servlet-class>saisieCandidatureServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ServletRenvoiMdp</servlet-name>
         <servlet-class>Servlet.ServletRenvoiMdp</servlet-class>
     </servlet>
@@ -36,13 +32,13 @@
         <servlet-name>ServletSaisieCandidature</servlet-name>
         <servlet-class>Servlet.ServletSaisieCandidature</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletSaisieDeCandidature</servlet-name>
+        <servlet-class>Servlet.ServletSaisieDeCandidature</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>saisieCandidatureServlet</servlet-name>
-        <url-pattern>/saisieCandidatureServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletRenvoiMdp</servlet-name>
@@ -71,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServletSaisieCandidature</servlet-name>
         <url-pattern>/ServletSaisieCandidature</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSaisieDeCandidature</servlet-name>
+        <url-pattern>/ServletSaisieDeCandidature</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

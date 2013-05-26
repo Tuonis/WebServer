@@ -19,9 +19,9 @@ import org.restlet.resource.ClientResource;
  *
  * @author Chanthavone
  */
-public class ServletsaisieCandidature extends HttpServlet {
+public class ServletSaisieDeCandidature extends HttpServlet {
     
-    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
+    private final String CANDIDATURE = "http://localhost:8080/WebService/candidature";
 
     /**
      * Processes requests for both HTTP
@@ -41,10 +41,10 @@ public class ServletsaisieCandidature extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletsaisieCandidature</title>");            
+            out.println("<title>Servlet ServletSaisieDeCandidature</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletsaisieCandidature at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletSaisieDeCandidature at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {            
@@ -82,21 +82,17 @@ public class ServletsaisieCandidature extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String id = request.getParameter("id");
-        String nom = request.getParameter("nom");
-        String prenom = request.getParameter("prenom");
-        String tel = request.getParameter("telephone");
-        String mail1 = request.getParameter("mail");
-        String adresse = request.getParameter("adresse");
-        String diplome = request.getParameter("diplome");
-        String competence = request.getParameter("competence");
-        String situationPro = request.getParameter("situationPro");
-        String url5 = CANDIDAT;
-        ClientResource resource5 = new ClientResource(url5);
-        Form form = new Form("id=" + id + "&nom=" + nom + "&prenom=" + prenom + "&tel=" + tel + "&mail=" + mail1 + "&adresse=" + adresse + "&diplome=" + diplome + "&competence=" + competence + "&situationPro=" + situationPro);
+        String idPromo = request.getParameter("idPromo");
+        String idCandidat = request.getParameter("idCandidat");
+        String idEtat = request.getParameter("idEtat");
+        String motivation = request.getParameter("motivation");
+        String dateCandidature = request.getParameter("dateCandidature");
+        String url6 = CANDIDATURE;
+        ClientResource resource = new ClientResource(url6);
+        Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateCandidature);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
-        resource5.put(rep);
+        resource.post(rep);
     }
 
     /**
