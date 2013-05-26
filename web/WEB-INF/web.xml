@@ -40,6 +40,10 @@
         <servlet-name>ServletModifierCandidature</servlet-name>
         <servlet-class>Servlet.ServletModifierCandidature</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletConfirmationInscription</servlet-name>
+        <servlet-class>Servlet.ServletConfirmationInscription</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>ServletModifierCandidature</servlet-name>
         <url-pattern>/ServletModifierCandidature</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConfirmationInscription</servlet-name>
+        <url-pattern>/ServletConfirmationInscription</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -10,18 +10,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.restlet.data.CharacterSet;
-import org.restlet.data.Form;
-import org.restlet.representation.Representation;
-import org.restlet.resource.ClientResource;
 
 /**
  *
- * @author Chanthavone
+ * @author Tuonis
  */
-public class ServletInscriptionCandidat extends HttpServlet {
-    
-    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
+public class ServletConfirmationInscription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -39,12 +33,13 @@ public class ServletInscriptionCandidat extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletInscriptionCandidat</title>");            
+            out.println("<title>Servlet ServletConfirmationInscription</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletInscriptionCandidat at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletConfirmationInscription at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {            
@@ -80,22 +75,7 @@ public class ServletInscriptionCandidat extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String nom2 = request.getParameter("nom");
-        String prenom2 = request.getParameter("prenom");
-        String tel2 = request.getParameter("telephone");
-        String mail2 = request.getParameter("mail");
-        String adresse2 = request.getParameter("adresse");
-        String diplome2 = request.getParameter("diplome");
-        String competence2 = request.getParameter("competence");
-        String situationPro2 = request.getParameter("situationPro");
-        String url6 = CANDIDAT;
-        ClientResource resource6 = new ClientResource(url6);
-        Form form2 = new Form("nom=" + nom2 + "&prenom=" + prenom2 + "&tel=" + tel2 + "&mail=" + mail2 + "&adresse=" + adresse2 + "&diplome=" + diplome2 + "&competence=" + competence2 + "&situationPro=" + situationPro2);
-        form2.encode(CharacterSet.UTF_8);
-        Representation rep2 = form2.getWebRepresentation();
-        resource6.post(rep2);
+        processRequest(request, response);
     }
 
     /**
