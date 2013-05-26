@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,10 +26,36 @@
             </div>
             <div id="principal">
                 <div id="principal_gauche">
-                    yohoho
+                    <div id="div-menu">
+                        <ul id="menu">
+                            <li>
+                                <a href="index.jsp">Accueil</a> <hr/>
+                            </li>
+                            <li>
+                                <a href="index.jsp?ref=inscriptionCandidat">Nouveau candidat</a> <hr/>
+                            </li>
+                            <li>
+                                <a href="saisieCandidature.jsp">Déposer une candidature</a> <hr/>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div id="principal_droite">
-                    yohoho
+                    <div id="principal_droite_haut">
+                        <jsp:include page="information.jsp"/>
+                    </div>
+                    <div id="principal_droite_bas">
+                        <c:set var="maPage" value="${param['ref']}.jsp"/>
+                        <c:choose>
+                            <c:when test="${maPage == '.jsp'}">
+                                <jsp:include page="accueil.jsp"/>
+                            </c:when>
+                            <c:otherwise>
+                                <jsp:include page="${maPage}"/>
+                            </c:otherwise>
+                        </c:choose>
+                        
+                    </div>
                 </div>
             </div>
             <div id="footer">
