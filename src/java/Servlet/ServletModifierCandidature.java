@@ -1,9 +1,8 @@
-package Servlet;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,22 +11,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.restlet.ext.xml.DomRepresentation;
 import org.restlet.resource.ClientResource;
-import org.restlet.resource.ResourceException;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 /**
  *
- * @author Chanthavone
+ * @author Kentish
  */
-public class ServletListeCandidatureByCandidat extends HttpServlet {
+public class ServletModifierCandidature extends HttpServlet {
+    private final String PROMOTIONS = "http://localhost:8080/Candidature/promotions";
+    private final String ETATS = "http://localhost:8080/Candidature/etats";
 
-    private final String CANDIDATS = "http://localhost:8080/Candidature/candidats/";
-    
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -46,10 +41,10 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletListeCandidatureByCandidat</title>");            
+            out.println("<title>Servlet ServletModifierCandidature</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletListeCandidatureByCandidat at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletModifierCandidature at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {            
@@ -70,7 +65,6 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -85,42 +79,24 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String mail = request.getParameter("mail");
-        String pass = request.getParameter("pass");
-        String url = CANDIDATS + "email=" + mail + "&mdp=" + pass;
-        out.println("URL : " + url);
-        ClientResource resource = null;
-        try {// Preparer l'appel au service Web distant
-            resource = new ClientResource(url);
-            // Recuperer la reponse en arbre DOM
-            DomRepresentation reponse = new DomRepresentation(resource.get());
-            Document doc = reponse.getDocument();
-            // Le mettre en post-it de la requete pour le passer a la jsp
-            //request.setAttribute("dom", doc);
-            NodeList candidatures = doc.getElementsByTagName("infoCandidature");
-            request.setAttribute("dom", doc);
-            NodeList candi = doc.getElementsByTagName("infoCandidat");
-            Element node = (Element) candi.item(0);
-            request.setAttribute("nom", node.getAttribute("nom"));
-            request.setAttribute("prenom", node.getAttribute("prenom"));
-            request.setAttribute("telephone", node.getAttribute("telephone"));
-            request.setAttribute("adresse", node.getAttribute("adresse"));
-            request.setAttribute("mail", node.getAttribute("mail"));
-
-
-            HttpSession session=request.getSession();
-            session.setAttribute("dom", doc);
-            session.setAttribute("id", node.getAttribute("id"));
-
-
-        } catch (ResourceException exc) {
-            out.println("Erreur : " + exc.getStatus().getCode() + " ("
-                    + exc.getStatus().getDescription() + ") : "
-                    + resource.getResponseEntity().getText());
-        }
-        RequestDispatcher rd = request.getRequestDispatcher("listeCandidatureByCandidat.jsp");
+        int idCandidat = Integer.parseInt(request.getParameter("idCandidat"));
+        int idEtat = Integer.parseInt(request.getParameter("idEtat"));
+        int idPromotion = Integer.parseInt(request.getParameter("idPromotion"));
+        request.setAttribute("idCandidat", idCandidat);
+        request.setAttribute("idEtat", idEtat);
+        request.setAttribute("idPromotion", idPromotion);
+        String url1 = PROMOTIONS;
+        String url2 = ETATS;
+        ClientResource resource1 = new ClientResource(url1);
+        ClientResource resource2 = new ClientResource(url2);
+        DomRepresentation reponse1 = new DomRepresentation(resource1.get());
+        Document doc1 = reponse1.getDocument();
+        DomRepresentation reponse2 = new DomRepresentation(resource2.get());
+        Document doc2 = reponse2.getDocument();
+        request.setAttribute("dom1", doc1);
+        request.setAttribute("dom2", doc2);
+        RequestDispatcher rd = request.getRequestDispatcher("modifierCandidature.jsp");
         rd.forward(request, response);
     }
 
