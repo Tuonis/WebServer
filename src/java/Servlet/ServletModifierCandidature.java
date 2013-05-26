@@ -13,9 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.restlet.data.CharacterSet;
+import org.restlet.data.Form;
 import org.restlet.ext.xml.DomRepresentation;
+import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  *
@@ -23,8 +28,10 @@ import org.w3c.dom.Document;
  */
 public class ServletModifierCandidature extends HttpServlet {
 
-    private final String PROMOTIONS = "http://localhost:8080/WebService/promotions";
-    private final String ETATS = "http://localhost:8080/WebService/etats";
+    private final String PROMOTIONS = "http://localhost:8080/Candidature/promotions";
+    private final String ETATS = "http://localhost:8080/Candidature/etats";
+    private final String CANDIDATURE = "http://localhost:8080/Candidature/candidatures";
+    private final String ETAT = "http://localhost:8080/Candidature/etat/";
 
     /**
      * Processes requests for both HTTP
@@ -121,8 +128,23 @@ public class ServletModifierCandidature extends HttpServlet {
              */
             case 2:
                 HttpSession s=request.getSession();
-                out.println(s.getAttribute("motivation"));
-                out.println(request.getParameter("etat"));
+                String url3 = CANDIDATURE;
+                String urlEtat = ETAT+request.getParameter("etat");
+                ClientResource resourceEtat = new ClientResource(urlEtat);
+                DomRepresentation reponse = new DomRepresentation(resourceEtat.get());
+                Document doc = reponse.getDocument();
+                NodeList candi = doc.getElementsByTagName("id");
+                Element node = (Element) candi.item(0);
+                String moti=(String) s.getAttribute("motivation");
+                String dateCandi=(String) s.getAttribute("dateCandidature");
+                int idEta=(Integer.valueOf(node.getTextContent()));
+                int idPromo=(Integer)s.getAttribute("idPromotion");
+                int idCandi=(Integer) s.getAttribute("idCandidat");
+                ClientResource resource5 = new ClientResource(url3);
+                Form form = new Form("idCandidat=" + idCandi + "&idPromo=" + idPromo + "&idEtat=" + idEta + "&motivation=" + moti + "&dateCandidature=" + dateCandi);
+                form.encode(CharacterSet.UTF_8);
+                Representation rep = form.getWebRepresentation();
+                resource5.put(rep);
                 
                 
                 break;
