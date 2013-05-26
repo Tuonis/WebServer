@@ -13,6 +13,7 @@
         <h1>Candidatures</h1>
         <table border=2>
             <th>Nom promotion</th>
+            <th>Motivation</th>
             <th>Date candidature</th>
             <th>Etat</th>
             <th>Nom</th>
@@ -25,6 +26,7 @@
             <x:forEach select="$dom/infosCandidature/infoCandidature" var="infos">
                 <tr>
                     <td><x:out select="$infos/@promo"/></td>
+                    <td><x:out select="$infos/@motivation"/></td> 
                     <td><x:out select="$infos/@dateCandidature"/></td>
                     <td><x:out select="$infos/@etat"/></td>
                     <td><x:out select="$infos/@nom"/></td>    
@@ -38,6 +40,8 @@
                             <input type="hidden"  name="idCandidat"  value=<x:out select="$infos/@idCandidat"/> >
                             <input type="hidden"  name="idEtat"  value=<x:out select="$infos/@idEtat"/> >
                             <input type="hidden"  name="idPromotion"  value=<x:out select="$infos/@idPromotion"/> >
+                            <input type="hidden"  name="motivation"  value=<x:out select="$infos/@motivation"/> >
+                            <input type="hidden"  name="dateCandidature"  value=<x:out select="$infos/@dateCandidature"/> >
                             <input name="cal" type="submit" value="Modifier" />
                         </form>
                     </td>
