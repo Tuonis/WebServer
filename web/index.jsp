@@ -28,15 +28,15 @@
                 <div id="principal_gauche">
                     <div id="div-menu">
                         <ul id="menu">
-                            <li>
-                                <a href="index.jsp">Accueil</a> <hr/>
-                            </li>
-                            <li>
-                                <a href="index.jsp?ref=inscriptionCandidat">Nouveau candidat</a> <hr/>
-                            </li>
-                            <li>
-                                <a href="saisieCandidature.jsp">Déposer une candidature</a> <hr/>
-                            </li>
+                            <c:set var="maSession" value="${sessionScope['nom']}"/>
+                            <c:choose>
+                                <c:when test="${maSession == null}">
+                                    <jsp:include page="menu.jsp?session=user"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <jsp:include page="menu.jsp?session=candidat"/>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>

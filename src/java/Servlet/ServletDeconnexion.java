@@ -1,9 +1,8 @@
-package Servlet;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,18 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.restlet.resource.ClientResource;
-import org.restlet.resource.ResourceException;
-import org.w3c.dom.Document;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Chanthavone
  */
-public class ServletRenvoiMdp extends HttpServlet {
+public class ServletDeconnexion extends HttpServlet {
 
-    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
-    
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -39,15 +34,11 @@ public class ServletRenvoiMdp extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletRenvoiMdp</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletRenvoiMdp at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            session.invalidate();
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+
         } finally {            
             out.close();
         }
@@ -81,25 +72,7 @@ public class ServletRenvoiMdp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String email = request.getParameter("mail");
-        String url2 = CANDIDAT + "mail=" + email;
-        out.println("URL : " + url2);
-        ClientResource resource2 = null;
-        try {// Preparer l'appel au service Web distant
-            resource2 = new ClientResource(url2);
-            // Recuperer la reponse en arbre DOM
-            Document doc = resource2.get(Document.class);
-            // Le mettre en post-it de la requete pour le passer a la jsp
-            request.setAttribute("dom", doc);
-        } catch (ResourceException exc) {
-            out.println("Erreur : " + exc.getStatus().getCode() + " ("
-                    + exc.getStatus().getDescription() + ") : "
-                    + resource2.getResponseEntity().getText());
-        }
-        RequestDispatcher rd2 = request.getRequestDispatcher("index.jsp?ref=renvoiMdp");
-        rd2.forward(request, response);
+        processRequest(request, response);
     }
 
     /**

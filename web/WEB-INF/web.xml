@@ -44,6 +44,10 @@
         <servlet-name>ServletConfirmationInscription</servlet-name>
         <servlet-class>Servlet.ServletConfirmationInscription</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <servlet-class>Servlet.ServletDeconnexion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ServletConfirmationInscription</servlet-name>
         <url-pattern>/ServletConfirmationInscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <url-pattern>/ServletDeconnexion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
