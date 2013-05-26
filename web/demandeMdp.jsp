@@ -8,21 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mot de passe oublié</title>
     </head>
     <body>
-        <h1>Mot de passe oublié</h1>
-        <div class="formu">
-            <h2>Authentification</h2>
-            <form action="ServletRenvoiMdp" method="post">
-                <label>Email </label><input name="mail" type="text">
-                <input type="hidden"  name="choix"  value="1">
-                <div class="block" id="pale-blue">
-                    <input name="cal" type="submit" value="connect" />
-                </div>
-            </form>
-        </div>
-
+        <form action="ServletRenvoiMdp" method="post">
+            <h1>Mot de passe oublié</h1>
+            <p> <label> Email </label><input name="mail" type="text"> </p>
+            <input type="hidden"  name="choix"  value="1">
+            <input name="cal" type="submit" value="Envoyer" />
+        </form>
     </body>
 </html>

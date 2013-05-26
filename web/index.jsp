@@ -8,10 +8,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style2.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Site de candidature</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div id="content">
+            <div id="header">
+                <div id="logo">
+                    
+                </div>
+                <div id="sloggan">
+                    
+                </div>
+            </div>
+            <div id="principal">
+                <div id="principal_gauche">
+                    yohoho
+                </div>
+                <div id="principal_droite">
+                    yohoho
+                </div>
+            </div>
+            <div id="footer">
+                
+            </div>
+        </div>
     </body>
 </html>

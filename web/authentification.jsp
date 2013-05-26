@@ -8,22 +8,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Authentification</title>
     </head>
     <body>
-        <h1>Consulter les candidatures</h1>
-        <div class="formu">
-            <h2>Authentification</h2>
-            <form action="ServletListeCandidatureByCandidat" method="post">
-                <label>Email </label><input name="mail" type="text">
-                <label>Mot de passe</label><input name="pass" type="password" /> <br/><br/>
-                <input type="hidden"  name="choix"  value="2">
-                <div class="block" id="pale-blue">
-                    <input name="cal" type="submit" value="connect" />
-                </div>
-            </form>
-        </div>
-
+        <form action="ServletListeCandidatureByCandidat" method="post">
+            <h1>Authentification</h1>
+            <p> <label> Email </label><input name="mail" type="text"> </p>
+            <p> <label>Mot de passe</label><input name="pass" type="password" /> </p>
+            <input type="hidden"  name="choix"  value="2">
+            <input name="cal" type="submit" value="connect" />
+        </form>
     </body>
 </html>

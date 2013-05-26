@@ -6,15 +6,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Candidatures</title>
     </head>
     <body>
-        <h1>Candidatures</h1>
-        <table border=2>
-            <th>Nom promotion</th>
-            <th>Date candidature</th>
-            <th>Etat</th>
+        <table>
+            <caption>Candidatures</caption>
+            <tr> <th>Nom promotion</th> <th>Date candidature</th> <th>Etat</th> </th>
 
             <x:forEach select="$dom/infosCandidature/infoCandidature" var="infos">
                 <tr>
@@ -25,15 +24,9 @@
             </x:forEach>
         </table>
 
-        <br/>
-        <br/>
-
-        <table border=2>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Telephone</th>
-            <th>Adresse</th>
-            <th>Mail</th>
+        <table>
+            <caption>Informations du candidat</caption>
+            <tr> <th>Nom</th> <th>Prenom</th> <th>Telephone</th> <th>Adresse</th> <th>Mail</th> </tr>
 
             <tr> 
                 <td>${nom}</td>
@@ -52,11 +45,10 @@
                  </tr>
              </x:forEach>--%>
         </table>
+        
         <form action="ServletDispatcher" method="post">
-                <input type="hidden"  name="choix"  value="5">
-                <div class="block" id="pale-blue">
-                    <input name="cal" type="submit" value="Faire une nouvelle candidature" />
-                </div>
+            <input type="hidden"  name="choix"  value="5">
+            <input name="cal" type="submit" value="Faire une nouvelle candidature" />
         </form>
 
 

@@ -6,20 +6,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Candidatures</title>
     </head>
     <body>
-        <h1>Candidatures</h1>
-        <table border=2>
-            <th>Nom promotion</th>
-            <th>Date candidature</th>
-            <th>Etat</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Telephone</th>
-            <th>Adresse</th>
-            <th>Mail</th>
+        <table>
+            <caption>Candidatures</caption>
+            <tr>
+                <th>Nom promotion</th>
+                <th>Date candidature</th>
+                <th>Etat</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Adresse</th>
+                <th>Mail</th>
+            </tr>
 
             <x:forEach select="$dom/infosCandidature/infoCandidature" var="infos">
                 <tr>
@@ -34,12 +37,7 @@
                     
                 </tr>
             </x:forEach>
-        </table>
-
-        <br/>
-        <br/>
-
-       
+        </table>   
     </body>
 </html>
 

@@ -111,7 +111,7 @@ public class ServletlisteCandidatureByPromoEtat extends HttpServlet {
                     + exc.getStatus().getDescription() + ") : "
                     + resource3.getResponseEntity().getText());
         }
-        RequestDispatcher rd4 = request.getRequestDispatcher("listeCandidatureByCandidat.jsp");
+        RequestDispatcher rd4 = request.getRequestDispatcher("listeCandidatureByPromoEtat.jsp");
         rd4.forward(request, response);
     }
 

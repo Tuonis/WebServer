@@ -10,20 +10,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Saisie Candidature</title>
+        <title>Saisie Candidat</title>
     </head>
-    <body>
-        <h1>Saisie candidature</h1>
+    <body>        
         <form action="ServletInscriptionCandidat" method="post">
-            Nom : <input type="text" name="nom"/> <br/>
-            Prénom : <input type="text" name="prenom"/> <br/>
-            Téléphone : <input type="text" name="telephone"/> <br/>
-            Email : <input type="text" name="mail"/> <br/>
-            Adresse : <input type="text" name="adresse"/> <br/>
-            Diplomes : <input type="text" name="diplome"/> <br/>
-            Compétences : <input type="text" name="competence"/> <br/>
-            Situation professionnelle : <input type="text" name="situationPro"/> <br/>
+            <h1>Saisie candidat</h1>
+            <p> <label> Nom : </label> <input type="text" name="nom"/> </p>
+            <p> <label> Prénom : </label> <input type="text" name="prenom"/> </p>
+            <p> <label> Téléphone : </label> <input type="text" name="telephone"/> </p>
+            <p> <label> Email : </label> <input type="text" name="mail"/> </p>
+            <p> <label> Adresse : </label> <input type="text" name="adresse"/> </p>
+            <p> <label> Diplomes : </label> <input type="text" name="diplome"/> </p>
+            <p> <label> Compétences : </label> <input type="text" name="competence"/> </p>
+            <p> <label> Situation professionnelle : </label> <input type="text" name="situationPro"/> </p>
             <input type="hidden"  name="choix"  value="6">
             <input type="submit" name="inscrire" value="valider"/>
         </form>
