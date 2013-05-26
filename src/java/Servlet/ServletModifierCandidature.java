@@ -23,8 +23,8 @@ import org.w3c.dom.Document;
  */
 public class ServletModifierCandidature extends HttpServlet {
 
-    private final String PROMOTIONS = "http://localhost:8080/Candidature/promotions";
-    private final String ETATS = "http://localhost:8080/Candidature/etats";
+    private final String PROMOTIONS = "http://localhost:8080/WebService/promotions";
+    private final String ETATS = "http://localhost:8080/WebService/etats";
 
     /**
      * Processes requests for both HTTP
