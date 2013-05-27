@@ -26,7 +26,7 @@ import org.w3c.dom.NodeList;
  */
 public class ServletListeCandidatureByCandidat extends HttpServlet {
 
-    private final String CANDIDATS = "http://localhost:8080/Candidature/candidats/";
+    private final String CANDIDATS = "http://localhost:8080/WebService/candidats/";
     
     /**
      * Processes requests for both HTTP
@@ -115,6 +115,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             session.setAttribute("id", node.getAttribute("id"));
             session.setAttribute("nom", node.getAttribute("nom"));
             session.setAttribute("prenom", node.getAttribute("prenom"));
+            session.setAttribute("mail", node.getAttribute("mail"));
 
 
         } catch (ResourceException exc) {

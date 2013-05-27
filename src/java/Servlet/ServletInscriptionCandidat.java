@@ -21,7 +21,7 @@ import org.restlet.resource.ClientResource;
  */
 public class ServletInscriptionCandidat extends HttpServlet {
     
-    private final String CANDIDAT = "http://localhost:8080/Candidature/candidat";
+    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
 
     /**
      * Processes requests for both HTTP
@@ -96,6 +96,7 @@ public class ServletInscriptionCandidat extends HttpServlet {
         form2.encode(CharacterSet.UTF_8);
         Representation rep2 = form2.getWebRepresentation();
         resource6.post(rep2);
+        response.sendRedirect("index.jsp?ref=accueil");
     }
 
     /**
