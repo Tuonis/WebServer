@@ -52,6 +52,10 @@
         <servlet-name>ServletCandidature</servlet-name>
         <servlet-class>Servlet.ServletCandidature</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletListePromotion</servlet-name>
+        <servlet-class>Servlet.ServletListePromotion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ServletCandidature</servlet-name>
         <url-pattern>/ServletCandidature</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListePromotion</servlet-name>
+        <url-pattern>/ServletListePromotion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
