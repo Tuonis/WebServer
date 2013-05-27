@@ -101,6 +101,7 @@ public class ServletModifierCandidature extends HttpServlet {
                 int idEtat = Integer.parseInt(request.getParameter("idEtat"));
                 int idPromotion = Integer.parseInt(request.getParameter("idPromotion"));
                 String motivation = request.getParameter("motivation");
+                System.out.println(motivation);
                 String dateCandidature = request.getParameter("dateCandidature");
                 HttpSession session = request.getSession();
                 session.setAttribute("idCandidat", idCandidat);
