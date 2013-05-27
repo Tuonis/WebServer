@@ -87,6 +87,7 @@ public class ServletSaisieDeCandidature extends HttpServlet {
         String idEtat = request.getParameter("idEtat");
         String motivation = request.getParameter("motivation");
         String dateCandidature = request.getParameter("dateCandidature");
+        System.out.println(dateCandidature);
         String url6 = CANDIDATURE;
         ClientResource resource = new ClientResource(url6);
         Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateCandidature);
