@@ -115,6 +115,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             session.setAttribute("id", node.getAttribute("id"));
             session.setAttribute("nom", node.getAttribute("nom"));
             session.setAttribute("prenom", node.getAttribute("prenom"));
+            session.setAttribute("mail", node.getAttribute("mail"));
 
 
         } catch (ResourceException exc) {

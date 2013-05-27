@@ -6,10 +6,16 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.restlet.data.CharacterSet;
+import org.restlet.data.Form;
+import org.restlet.representation.Representation;
+import org.restlet.resource.ClientResource;
 
 /**
  *
@@ -17,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletCandidature extends HttpServlet {
 
+    private final String CANDIDATURE = "http://localhost:8080/WebService/candidature";
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -76,6 +83,25 @@ public class ServletCandidature extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        String idPromo = request.getParameter("promo");
+        HttpSession session= request.getSession();
+        String idCandidat = (String) session.getAttribute("idCandidat");
+                
+        int idEtat = 7;
+        String motivation = request.getParameter("motivation");
+        Date dateCandidature = new Date();
+        //String dateCandidature = request.getParameter("dateCandidature");
+        
+        String url6 = CANDIDATURE;
+        ClientResource resource = new ClientResource(url6);
+        Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateCandidature + "&mail=" + session.getAttribute("mail"));
+        form.encode(CharacterSet.UTF_8);
+        Representation rep = form.getWebRepresentation();
+        resource.post(rep);
+        
     }
 
     /**
