@@ -1,6 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="bloc_gauche">
-    <h1> Vous êtes déjà candidat?</h1>
-    Authentifiez vous pour accéder à votre compte <br/>
+    <h1> Vous Ãªtes dÃ©jÃ  candidat?</h1>
+    Authentifiez vous pour accÃ©der Ã  votre compte <br/>
     <jsp:include page="authentification.jsp"/>
 </div>
 <div id="bloc_droite">
@@ -8,5 +9,5 @@
     Une formation vous interesse? <br/>
     Inscrivez vous ici en remplissant le formulaire de candidature. <br/>
     <br/>
-    <a href="index.jsp?ref=inscriptionCandidat">Accéder à la candidature >></a>
+    <a href="index.jsp?ref=inscriptionCandidat">AccÃ©der Ã  la candidature >></a>
 </div>
