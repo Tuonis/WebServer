@@ -95,8 +95,8 @@ public class ServletConfirmationInscription extends HttpServlet {
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
         resource5.put(rep);
-        //RequestDispatcher rd5 = request.getRequestDispatcher("authentification.jsp");
-        //rd5.forward(request, response);
+        RequestDispatcher rd5 = request.getRequestDispatcher("index.jsp?ref=accueil");
+        rd5.forward(request, response);
     }
 
     /**
