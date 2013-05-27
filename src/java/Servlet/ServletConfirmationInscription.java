@@ -23,7 +23,7 @@ import org.restlet.resource.ClientResource;
 public class ServletConfirmationInscription extends HttpServlet {
 
     
-     private final String INSCRIPTION = "http://localhost:8080/WebService/inscription";
+     private final String INSCRIPTION = "http://localhost:8080/Candidature/inscription";
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
