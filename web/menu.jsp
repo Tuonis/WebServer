@@ -24,7 +24,7 @@
             <a href="index.jsp?ref=saisieCandidat">Modifier son profil</a> <hr/>
         </li>
         <li>
-            <a href="index.jsp?ref=saisieCandidature">Déposer une candidature</a> <hr/>
+            <a href="ServletListePromotion">Déposer une candidature</a> <hr/>
         </li>
         <li>
             <a href="ServletDeconnexion">Déconnexion</a> <hr/>

@@ -66,22 +66,7 @@ public class ServletListePromotion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+                response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String url3 = CANDIDATURE;
         ClientResource resource3 = null;
@@ -100,8 +85,23 @@ public class ServletListePromotion extends HttpServlet {
                     + exc.getStatus().getDescription() + ") : "
                     + resource3.getResponseEntity().getText());
         }
-        RequestDispatcher rd4 = request.getRequestDispatcher("saisieCandidature.jsp");
+        RequestDispatcher rd4 = request.getRequestDispatcher("index.jsp?ref=saisieCandidature");
         rd4.forward(request, response);
+    }
+
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     }
 
     /**
