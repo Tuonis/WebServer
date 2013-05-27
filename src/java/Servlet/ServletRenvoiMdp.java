@@ -22,7 +22,7 @@ import org.w3c.dom.Document;
  */
 public class ServletRenvoiMdp extends HttpServlet {
 
-    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
+    private final String CANDIDAT = "http://localhost:8080/WebService/candidats/";
     
     /**
      * Processes requests for both HTTP
