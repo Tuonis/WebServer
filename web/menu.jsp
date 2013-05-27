@@ -7,6 +7,9 @@
             <a href="index.jsp">Accueil</a> <hr/>
         </li>
         <li>
+            <a href="index.jsp?ref=authentification">S'identifier</a> <hr/>
+        </li>
+        <li>
             <a href="index.jsp?ref=inscriptionCandidat">Nouveau candidat</a> <hr/>
         </li>
         <li>
