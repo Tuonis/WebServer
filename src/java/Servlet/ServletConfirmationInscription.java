@@ -23,7 +23,7 @@ import org.restlet.resource.ClientResource;
 public class ServletConfirmationInscription extends HttpServlet {
 
     
-     private final String INSCRIPTION = "http://localhost:8080/Candidature/inscription";
+     private final String INSCRIPTION = "http://localhost:8080/WebService/inscription";
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -95,8 +95,9 @@ public class ServletConfirmationInscription extends HttpServlet {
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
         resource5.put(rep);
-        RequestDispatcher rd5 = request.getRequestDispatcher("index.jsp?ref=accueil");
-        rd5.forward(request, response);
+        response.sendRedirect("index.jsp?ref=accueil");
+        /*RequestDispatcher rd5 = request.getRequestDispatcher("index.jsp?ref=accueil");
+        rd5.forward(request, response);*/
     }
 
     /**

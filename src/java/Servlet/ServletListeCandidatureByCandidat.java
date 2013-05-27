@@ -26,7 +26,7 @@ import org.w3c.dom.NodeList;
  */
 public class ServletListeCandidatureByCandidat extends HttpServlet {
 
-    private final String CANDIDATS = "http://localhost:8080/Candidature/candidats/";
+    private final String CANDIDATS = "http://localhost:8080/WebService/candidats/";
     
     /**
      * Processes requests for both HTTP

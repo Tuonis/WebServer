@@ -7,6 +7,7 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -88,7 +89,8 @@ public class ServletCandidature extends HttpServlet {
         
         String idPromo = request.getParameter("promo");
         HttpSession session= request.getSession();
-        String idCandidat = (String) session.getAttribute("idCandidat");
+       
+        int idCandidat = Integer.parseInt((String)session.getAttribute("id"));
                 
         int idEtat = 7;
         String motivation = request.getParameter("motivation");
@@ -101,6 +103,8 @@ public class ServletCandidature extends HttpServlet {
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
         resource.post(rep);
+        response.sendRedirect("index.jsp?ref=listeCandidatureByCandidat");
+        
         
     }
 
