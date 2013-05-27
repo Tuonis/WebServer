@@ -16,6 +16,10 @@ body {
     height: 125px;
 }
 
+#logo {
+    background: url(./web/images/logoRVB_UParisDescartes.png);
+}
+
 #principal {
     background: #FFFFFF;
     width: 100%;
