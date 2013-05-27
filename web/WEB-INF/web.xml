@@ -48,6 +48,10 @@
         <servlet-name>ServletDeconnexion</servlet-name>
         <servlet-class>Servlet.ServletDeconnexion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCandidature</servlet-name>
+        <servlet-class>Servlet.ServletCandidature</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ServletDeconnexion</servlet-name>
         <url-pattern>/ServletDeconnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCandidature</servlet-name>
+        <url-pattern>/ServletCandidature</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
