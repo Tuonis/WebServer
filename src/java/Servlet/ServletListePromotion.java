@@ -22,7 +22,7 @@ import org.w3c.dom.Document;
  */
 public class ServletListePromotion extends HttpServlet {
 
-    private final String CANDIDATURE = "http://localhost:8080/WebService/promotions";
+    private final String CANDIDATURE = "http://localhost:8080/WS_cmsl/promotions";
 
     /**
      * Processes requests for both HTTP
