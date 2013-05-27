@@ -26,7 +26,7 @@ import org.w3c.dom.NodeList;
  */
 public class ServletListeCandidatureByCandidat extends HttpServlet {
 
-    private final String CANDIDATS = "http://localhost:8080/Candidature/candidats/";
+    private final String CANDIDATS = "http://localhost:8080/WebService/candidats/";
     
     /**
      * Processes requests for both HTTP
@@ -113,6 +113,8 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             HttpSession session=request.getSession();
             session.setAttribute("dom", doc);
             session.setAttribute("id", node.getAttribute("id"));
+            session.setAttribute("nom", node.getAttribute("nom"));
+            session.setAttribute("prenom", node.getAttribute("prenom"));
 
 
         } catch (ResourceException exc) {
@@ -120,7 +122,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
                     + exc.getStatus().getDescription() + ") : "
                     + resource.getResponseEntity().getText());
         }
-        RequestDispatcher rd = request.getRequestDispatcher("listeCandidatureByCandidat.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=listeCandidatureByCandidat");
         rd.forward(request, response);
     }
 

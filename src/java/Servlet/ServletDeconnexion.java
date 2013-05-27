@@ -6,22 +6,18 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.restlet.data.CharacterSet;
-import org.restlet.data.Form;
-import org.restlet.representation.Representation;
-import org.restlet.resource.ClientResource;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Chanthavone
  */
-public class ServletSaisieDeCandidature extends HttpServlet {
-    
-    private final String CANDIDATURE = "http://localhost:8080/WebService/candidature";
+public class ServletDeconnexion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -38,15 +34,11 @@ public class ServletSaisieDeCandidature extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletSaisieDeCandidature</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletSaisieDeCandidature at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            session.invalidate();
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+
         } finally {            
             out.close();
         }
@@ -80,19 +72,7 @@ public class ServletSaisieDeCandidature extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String idPromo = request.getParameter("idPromo");
-        String idCandidat = request.getParameter("idCandidat");
-        String idEtat = request.getParameter("idEtat");
-        String motivation = request.getParameter("motivation");
-        String dateCandidature = request.getParameter("dateCandidature");
-        String url6 = CANDIDATURE;
-        ClientResource resource = new ClientResource(url6);
-        Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateCandidature);
-        form.encode(CharacterSet.UTF_8);
-        Representation rep = form.getWebRepresentation();
-        resource.post(rep);
+        processRequest(request, response);
     }
 
     /**

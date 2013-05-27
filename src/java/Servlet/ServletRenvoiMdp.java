@@ -22,7 +22,7 @@ import org.w3c.dom.Document;
  */
 public class ServletRenvoiMdp extends HttpServlet {
 
-    private final String CANDIDAT = "http://localhost:8080/Candidature/candidat";
+    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
     
     /**
      * Processes requests for both HTTP
@@ -98,7 +98,7 @@ public class ServletRenvoiMdp extends HttpServlet {
                     + exc.getStatus().getDescription() + ") : "
                     + resource2.getResponseEntity().getText());
         }
-        RequestDispatcher rd2 = request.getRequestDispatcher("renvoiMdp.jsp");
+        RequestDispatcher rd2 = request.getRequestDispatcher("index.jsp?ref=renvoiMdp");
         rd2.forward(request, response);
     }
 
