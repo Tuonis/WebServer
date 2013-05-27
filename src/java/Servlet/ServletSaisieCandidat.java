@@ -21,7 +21,7 @@ import org.restlet.resource.ClientResource;
  */
 public class ServletSaisieCandidat extends HttpServlet {
     
-    private final String CANDIDAT = "http://localhost:8080/Candidature/candidat";
+    private final String CANDIDAT = "http://localhost:8080/WebService/candidat";
 
     /**
      * Processes requests for both HTTP
