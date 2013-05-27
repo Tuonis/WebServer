@@ -6,16 +6,23 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.restlet.ext.xml.DomRepresentation;
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
+import org.w3c.dom.Document;
 
 /**
  *
  * @author Kentish
  */
 public class ServletListePromotion extends HttpServlet {
+
+    private final String CANDIDATURE = "http://localhost:8080/Candidature/promotions";
 
     /**
      * Processes requests for both HTTP
@@ -35,13 +42,13 @@ public class ServletListePromotion extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletListePromotion</title>");            
+            out.println("<title>Servlet ServletListePromotion</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletListePromotion at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } finally {            
+        } finally {
             out.close();
         }
     }
@@ -74,7 +81,27 @@ public class ServletListePromotion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        String url3 = CANDIDATURE;
+        ClientResource resource3 = null;
+        try {// Preparer l'appel au service Web distant
+            resource3 = new ClientResource(url3);
+            // Recuperer la reponse en arbre DOM
+            DomRepresentation reponse = new DomRepresentation(resource3.get());
+            Document doc = reponse.getDocument();
+            // Le mettre en post-it de la requete pour le passer a la jsp
+            //request.setAttribute("dom", doc);
+            request.setAttribute("dom", doc);
+
+
+        } catch (ResourceException exc) {
+            out.println("Erreur : " + exc.getStatus().getCode() + " ("
+                    + exc.getStatus().getDescription() + ") : "
+                    + resource3.getResponseEntity().getText());
+        }
+        RequestDispatcher rd4 = request.getRequestDispatcher("saisieCandidature.jsp");
+        rd4.forward(request, response);
     }
 
     /**

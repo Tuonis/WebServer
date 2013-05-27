@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
-<form action="ServletsaisieCandidature" method="post">
+
+<form action="ServletListePromotion" method="post">
     <h1>Saisie candidat</h1>
     <x:forEach select="$dom/infosCandidature/infoCandidat" var="infos">
         <p> <label> Nom : </label> <input type="text" name="nom" value="<x:out select="$infos/@nom"/>"/> </p>
