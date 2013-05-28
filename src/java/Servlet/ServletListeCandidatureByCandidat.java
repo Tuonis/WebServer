@@ -112,7 +112,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             request.setAttribute("telephone", node.getAttribute("telephone"));
             request.setAttribute("adresse", node.getAttribute("adresse"));
             request.setAttribute("mail", node.getAttribute("mail"));
-
+            
 
             HttpSession session=request.getSession();
             session.setAttribute("dom", doc);
@@ -120,6 +120,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             session.setAttribute("nom", node.getAttribute("nom"));
             session.setAttribute("prenom", node.getAttribute("prenom"));
             session.setAttribute("mail", node.getAttribute("mail"));
+            session.setAttribute("pass", node.getAttribute("pass"));
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=listeCandidatureByCandidat");
             rd.forward(request, response);
 
