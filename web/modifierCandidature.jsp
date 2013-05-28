@@ -15,6 +15,11 @@
     </head>
     <body>
 
+        <%
+            session = request.getSession();
+            String admin = (String) session.getAttribute("admin");
+            if (admin == "admin") {
+        %>
         <form action="ServletModifierCandidature" method="post">
             <select name="etat" size="1">
                 <x:forEach select="$dom2/etats/etat" var="etat">
@@ -32,6 +37,11 @@
                 </x:forEach>
             </select>
         </form>--%>
-        
+                <%
+        }
+        else {
+            out.println("Vous n'êtes pas autorisé à accéder à cette page");
+        }
+        %>
     </body>
 </html>

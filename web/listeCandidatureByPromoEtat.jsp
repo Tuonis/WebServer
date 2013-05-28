@@ -10,6 +10,11 @@
         <title>Candidatures</title>
     </head>
     <body>
+        <%
+            session = request.getSession();
+            String admin = (String) session.getAttribute("admin");
+            if (admin == "admin") {
+        %>
         <h1>Candidatures</h1>
         <table border=2>
             <th>Nom promotion</th>
@@ -55,7 +60,12 @@
         <br/>
         <br/>
 
-
+        <%
+        }
+        else {
+            out.println("Vous n'êtes pas autorisé à accéder à cette page");
+        }
+        %>
     </body>
 </html>
 

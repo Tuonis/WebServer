@@ -111,6 +111,7 @@ public class ServletAdminAuthentification extends HttpServlet {
             session.setAttribute("nom", node.getAttribute("nom"));
             session.setAttribute("prenom", node.getAttribute("prenom"));
             session.setAttribute("mail", node.getAttribute("mail"));
+            session.setAttribute("mdp", node.getAttribute("mdp"));
             session.setAttribute("admin", "admin");
             RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
             rd.forward(request, response);

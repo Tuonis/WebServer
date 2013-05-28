@@ -15,6 +15,11 @@
         <title>Site candidature administrateur</title>
     </head>
     <body>
+        <%
+            session = request.getSession();
+            String admin = (String) session.getAttribute("admin");
+            if (admin == "admin") {
+        %>
         <div id="content">
             <div id="header">
                 <div id="logo">
@@ -65,5 +70,11 @@
                 
             </div>
         </div>
+        <%
+        }
+        else {
+            out.println("Vous n'êtes pas autorisé à accéder à cette page");
+        }
+        %>
     </body>
 </html>

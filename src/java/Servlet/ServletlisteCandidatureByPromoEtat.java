@@ -11,6 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
 import org.restlet.ext.xml.DomRepresentation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -101,6 +104,11 @@ public class ServletlisteCandidatureByPromoEtat extends HttpServlet {
         ClientResource resource3 = null;
         try {// Preparer l'appel au service Web distant
             resource3 = new ClientResource(url3);
+            HttpSession session = request.getSession();
+            String mail = (String) session.getAttribute("mail");
+            String mdp = (String) session.getAttribute("mdp");
+            ChallengeResponse authentication = new ChallengeResponse(ChallengeScheme.HTTP_BASIC, mail, mdp);
+            resource3.setChallengeResponse(authentication);
             // Recuperer la reponse en arbre DOM
             DomRepresentation reponse = new DomRepresentation(resource3.get());
             Document doc = reponse.getDocument();
