@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
 import org.restlet.ext.xml.DomRepresentation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -93,31 +95,35 @@ public class ServletAdminAuthentification extends HttpServlet {
         ClientResource resource = null;
         try {// Preparer l'appel au service Web distant
             resource = new ClientResource(url);
+            ChallengeResponse authentication = new ChallengeResponse(ChallengeScheme.HTTP_BASIC, mail, pass);
+            resource.setChallengeResponse(authentication);
             // Recuperer la reponse en arbre DOM
             DomRepresentation reponse = new DomRepresentation(resource.get());
             Document doc = reponse.getDocument();
             // Le mettre en post-it de la requete pour le passer a la jsp
             //request.setAttribute("dom", doc);
-            NodeList admin = doc.getElementsByTagName("admin");
+            NodeList admins = doc.getElementsByTagName("admins");
             request.setAttribute("dom", doc);
-            NodeList candi = doc.getElementsByTagName("infoCandidat");
-            Element node = (Element) candi.item(0);
+            NodeList admin = doc.getElementsByTagName("admin");
+            Element node = (Element) admin.item(0);
             HttpSession session=request.getSession();
             session.setAttribute("id", node.getAttribute("id"));
             session.setAttribute("nom", node.getAttribute("nom"));
             session.setAttribute("prenom", node.getAttribute("prenom"));
             session.setAttribute("mail", node.getAttribute("mail"));
             session.setAttribute("admin", "admin");
-
+            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+            rd.forward(request, response);
 
         } catch (ResourceException exc) {
             out.println("Erreur : " + exc.getStatus().getCode() + " ("
                     + exc.getStatus().getDescription() + ") : "
                     + resource.getResponseEntity().getText());
+            request.setAttribute("erreur", "Identifiants incorrects");
+            RequestDispatcher rd = request.getRequestDispatcher("admin_authentification.jsp");
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
-        rd.forward(request, response);
-    }
+     }
 
     /**
      * Returns a short description of the servlet.

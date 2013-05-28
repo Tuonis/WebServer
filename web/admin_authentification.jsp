@@ -4,6 +4,7 @@
     Author     : Chanthavone
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,11 @@
             <h1>Authentification administrateur</h1>
             <p> <label> Mail </label> <input type="text" name="mail" value="" size="10" /> </p>
             <p> <label> Mot de passe </label> <input type="password" name="password" value="" size="10" /></p>
+            <c:if test="${erreur!=null}">
+            <div id="erreur"> ${erreur} </div>
+            </c:if>    
             <input type="submit" value="Se connecter" name="connect" />
+            
         </form>
     </body>
 </html>
