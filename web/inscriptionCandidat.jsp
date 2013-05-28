@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<form action="ServletInscriptionCandidat" method="post">
-    <h1>Saisie candidat</h1>
+<form action="ServletInscriptionCandidat" method="post" class="grand_form">
+    <h1>Inscription du candidat</h1>
     <p> <label> Nom : </label> <input type="text" name="nom"/> </p>
     <p> <label> Prénom : </label> <input type="text" name="prenom"/> </p>
     <p> <label> Téléphone : </label> <input type="text" name="telephone"/> </p>

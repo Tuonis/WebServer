@@ -13,7 +13,7 @@
             <a href="index.jsp?ref=inscriptionCandidat">Nouveau candidat</a> <hr/>
         </li>
         <li>
-            <a href="index.jsp?ref=saisieCandidature">Déposer une candidature</a> <hr/>
+            <a href="index.jsp?ref=inscriptionCandidat">Déposer une candidature</a> <hr/>
         </li>
     </c:when>
     <c:otherwise>

@@ -5,9 +5,10 @@
 
 
 
-<form action="ServletCandidature" method="post">
-    <h1>Choix Candidature</h1>
+<form action="ServletCandidature" method="post"  class="grand_form">
+    <h1>Inscription à une promotion</h1>
 
+    <p> <label> Promotion : </label> 
     <select name="promo" size="1">
         <x:forEach select="$dom/promotions/promotion" var="promo">
             <option><x:out select="$promo/@nom"/></option> 
