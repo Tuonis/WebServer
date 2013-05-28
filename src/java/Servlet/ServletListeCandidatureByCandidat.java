@@ -89,7 +89,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
         PrintWriter out = response.getWriter();
         String mail = request.getParameter("mail");
         String pass = request.getParameter("pass");
-        String url = CANDIDATS + "email=" + mail + "&mdp=" + pass;
+        String url = CANDIDATS + "email=" + mail;
         out.println("URL : " + url);
         ClientResource resource = null;
         try {// Preparer l'appel au service Web distant
