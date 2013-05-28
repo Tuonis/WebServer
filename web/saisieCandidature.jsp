@@ -14,8 +14,8 @@
             <option><x:out select="$promo/@nom"/></option> 
         </x:forEach>
     </select>
-
-    <p> <label> Motivation : </label> <input type="text" name="motivation"/> </p>
+ </p>
+    <p> <label> Motivation : </label> <textarea type="text" name="motivation" rows="4" cols="35"/></textarea> </p>
     <%  session= request.getSession(); 
         String id=(String)session.getAttribute("id");
        System.out.println("attribut session : "+id);
