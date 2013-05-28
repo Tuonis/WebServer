@@ -86,27 +86,30 @@ public class ServletCandidature extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        response.setContentType("text/html;charset=UTF-8");
+        //processRequest(request, response);
+        //response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         String idPromo = request.getParameter("promo");
-        HttpSession session= request.getSession();
-       
-        int idCandidat = Integer.parseInt((String)session.getAttribute("id"));
-                
+        //HttpSession session= request.getSession();
+        System.out.println("test dans servlet : " +request.getParameter("candidat"));
+        int idCandidat = Integer.parseInt(request.getParameter("candidat"));
+        //int idCandidat = Integer.parseInt((String)session.getAttribute("id"));
+        String mail = request.getParameter("mail");
         int idEtat = 7;
         String motivation = request.getParameter("motivation");
         Date dateCandidature = new Date();
+        java.sql.Date dateSQL = new java.sql.Date(dateCandidature.getYear(), dateCandidature.getMonth(), dateCandidature.getDate());
         //String dateCandidature = request.getParameter("dateCandidature");
         
         String url6 = CANDIDATURE;
         ClientResource resource = new ClientResource(url6);
-        Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateCandidature + "&mail=" + session.getAttribute("mail"));
+        Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateSQL + "&mail=" + mail /*session.getAttribute("mail")*/);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
         resource.post(rep);
         response.sendRedirect("index.jsp?ref=listeCandidatureByCandidat");
+       
         
         
     }

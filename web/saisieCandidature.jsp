@@ -15,5 +15,13 @@
     </select>
 
     <p> <label> Motivation : </label> <input type="text" name="motivation"/> </p>
+    <%  session= request.getSession(); 
+        String id=(String)session.getAttribute("id");
+       System.out.println("attribut session : "+id);
+       String mail = (String) session.getAttribute("mail");
+       System.out.println("attribut session mail : "+mail);
+    %>
+    <input type="hidden" name="candidat" value="<%=id %>" />
+    <input type="hidden" name="mail" value="<%=mail%>" />
     <input type="submit" name="inscrire" value="valider">
 </form>
