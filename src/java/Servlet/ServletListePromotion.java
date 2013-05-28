@@ -66,7 +66,27 @@ public class ServletListePromotion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              
+              response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        String url3 = CANDIDATURE;
+        ClientResource resource3 = null;
+        try {// Preparer l'appel au service Web distant
+            resource3 = new ClientResource(url3);
+            // Recuperer la reponse en arbre DOM
+            DomRepresentation reponse = new DomRepresentation(resource3.get());
+            Document doc = reponse.getDocument();
+            // Le mettre en post-it de la requete pour le passer a la jsp
+            //request.setAttribute("dom", doc);
+            request.setAttribute("dom", doc);
+
+
+        } catch (ResourceException exc) {
+            out.println("Erreur : " + exc.getStatus().getCode() + " ("
+                    + exc.getStatus().getDescription() + ") : "
+                    + resource3.getResponseEntity().getText());
+        }
+        RequestDispatcher rd4 = request.getRequestDispatcher("index.jsp?ref=saisieCandidature");
+        rd4.forward(request, response);
     }
 
     /**
