@@ -74,6 +74,10 @@ public class ServletConfirmationInscription extends HttpServlet {
      * Handles the HTTP
      * <code>POST</code> method.
      *
+     * Appelé lors de la confirmation d'inscription d'un candidat
+     * On récupère son mot de passe (qui lui avait été envoyé par mail)
+     * Et on appelle la méthode put de InscriptionRessource
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
