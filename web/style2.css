@@ -187,3 +187,7 @@ a.submit:focus{
 	border-color:#B6B6B6;
 	outline:none;
 }
+
+#erreur{
+    color:red;
+}

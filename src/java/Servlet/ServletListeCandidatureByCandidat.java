@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
 import org.restlet.ext.xml.DomRepresentation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -94,6 +96,8 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
         ClientResource resource = null;
         try {// Preparer l'appel au service Web distant
             resource = new ClientResource(url);
+            ChallengeResponse authentication = new ChallengeResponse(ChallengeScheme.HTTP_BASIC, mail, pass);
+            resource.setChallengeResponse(authentication);
             // Recuperer la reponse en arbre DOM
             DomRepresentation reponse = new DomRepresentation(resource.get());
             Document doc = reponse.getDocument();
@@ -116,15 +120,15 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             session.setAttribute("nom", node.getAttribute("nom"));
             session.setAttribute("prenom", node.getAttribute("prenom"));
             session.setAttribute("mail", node.getAttribute("mail"));
-
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=listeCandidatureByCandidat");
+            rd.forward(request, response);
 
         } catch (ResourceException exc) {
-            out.println("Erreur : " + exc.getStatus().getCode() + " ("
-                    + exc.getStatus().getDescription() + ") : "
-                    + resource.getResponseEntity().getText());
+            request.setAttribute("erreur", "Identifiants incorrects");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=authentification");
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=listeCandidatureByCandidat");
-        rd.forward(request, response);
+        
     }
 
     /**
