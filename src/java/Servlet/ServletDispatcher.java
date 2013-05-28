@@ -82,7 +82,7 @@ public class ServletDispatcher extends HttpServlet {
         HttpSession s=request.getSession();
         Document d=(Document) s.getAttribute("dom");
         request.setAttribute("dom", d);
-        RequestDispatcher rd5 = request.getRequestDispatcher("saisieCandidat.jsp");
+        RequestDispatcher rd5 = request.getRequestDispatcher("index.jsp?ref=saisieCandidat.jsp");
         rd5.forward(request, response);
     }
 

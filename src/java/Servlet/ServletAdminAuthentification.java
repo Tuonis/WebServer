@@ -98,17 +98,10 @@ public class ServletAdminAuthentification extends HttpServlet {
             Document doc = reponse.getDocument();
             // Le mettre en post-it de la requete pour le passer a la jsp
             //request.setAttribute("dom", doc);
-            NodeList candidatures = doc.getElementsByTagName("infoCandidature");
+            NodeList admin = doc.getElementsByTagName("admin");
             request.setAttribute("dom", doc);
             NodeList candi = doc.getElementsByTagName("infoCandidat");
             Element node = (Element) candi.item(0);
-            request.setAttribute("nom", node.getAttribute("nom"));
-            request.setAttribute("prenom", node.getAttribute("prenom"));
-            request.setAttribute("telephone", node.getAttribute("telephone"));
-            request.setAttribute("adresse", node.getAttribute("adresse"));
-            request.setAttribute("mail", node.getAttribute("mail"));
-
-
             HttpSession session=request.getSession();
             session.setAttribute("id", node.getAttribute("id"));
             session.setAttribute("nom", node.getAttribute("nom"));

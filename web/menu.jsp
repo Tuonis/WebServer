@@ -18,9 +18,6 @@
     </c:when>
     <c:otherwise>
         <li>
-            <a href="index.jsp">Accueil</a> <hr/>
-        </li>
-        <li>
             <a href="index.jsp?ref=listeCandidatureByCandidat">Consulter ses candidatures</a> <hr/>
         </li>
         <li>
