@@ -105,7 +105,7 @@ public class ServletCandidature extends HttpServlet {
         // Envoi à la ressource
         resource.post(rep);
         // Redirection vers la page du candidat
-        response.sendRedirect("index.jsp?ref=listeCandidatureByCandidat");
+        response.sendRedirect("ServletListeCandidature");
        
         
         

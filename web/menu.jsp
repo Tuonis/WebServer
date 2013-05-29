@@ -18,7 +18,7 @@
     </c:when>
     <c:otherwise>
         <li>
-            <a href="index.jsp?ref=listeCandidatureByCandidat">Consulter ses candidatures</a> <hr/>
+            <a href="ServletListeCandidature">Consulter ses candidatures</a> <hr/>
         </li>
         <li>
             <a href="index.jsp?ref=saisieCandidat">Modifier son profil</a> <hr/>

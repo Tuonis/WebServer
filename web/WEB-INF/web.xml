@@ -56,6 +56,10 @@
         <servlet-name>ServletAdminAuthentification</servlet-name>
         <servlet-class>Servlet.ServletAdminAuthentification</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletListeCandidature</servlet-name>
+        <servlet-class>Servlet.ServletListeCandidature</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRenvoiMdp</servlet-name>
         <url-pattern>/ServletRenvoiMdp</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>ServletAdminAuthentification</servlet-name>
         <url-pattern>/ServletAdminAuthentification</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListeCandidature</servlet-name>
+        <url-pattern>/ServletListeCandidature</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
