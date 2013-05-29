@@ -146,6 +146,8 @@ public class ServletModifierCandidature extends HttpServlet {
                 form.encode(CharacterSet.UTF_8);
                 Representation rep = form.getWebRepresentation();
                 resource5.put(rep);
+                RequestDispatcher rd2 = request.getRequestDispatcher("admin.jsp");
+                rd2.forward(request, response);
                 
                 
                 break;

@@ -6,10 +6,14 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
 import org.restlet.data.CharacterSet;
 import org.restlet.data.Form;
 import org.restlet.representation.Representation;
@@ -84,6 +88,9 @@ public class ServletSaisieCandidat extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        String mail = (String) session.getAttribute("mail");
+        String pass = (String) session.getAttribute("pass");
         // Récupération des paramètres de la requête
         String id = request.getParameter("id");
         String nom = request.getParameter("nom");
@@ -97,12 +104,17 @@ public class ServletSaisieCandidat extends HttpServlet {
         String url5 = CANDIDAT;
         // Preparation l'appel au service Web distant
         ClientResource resource5 = new ClientResource(url5);
+        ChallengeResponse authentication = new ChallengeResponse(ChallengeScheme.HTTP_BASIC, mail, pass);
+        resource5.setChallengeResponse(authentication);
         // Préparation du formulaire
         Form form = new Form("id=" + id + "&nom=" + nom + "&prenom=" + prenom + "&tel=" + tel + "&mail=" + mail1 + "&adresse=" + adresse + "&diplome=" + diplome + "&competence=" + competence + "&situationPro=" + situationPro);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
         // Envoi à la ressource
         resource5.put(rep);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=listeCandidatureByCandidat");
+        rd.forward(request, response);
     }
 
     /**

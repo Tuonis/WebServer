@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 
-<form action="ServletListePromotion" method="post" class="grand_form">
+<form action="ServletsaisieCandidature" method="post" class="grand_form">
     <h1>Modification de vos informations</h1>
     <x:forEach select="$dom/infosCandidature/infoCandidat" var="infos">
         <p> <label> Nom : </label> <input type="text" name="nom" value="<x:out select="$infos/@nom"/>"/> </p>

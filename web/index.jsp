@@ -18,7 +18,8 @@
         <div id="content">
             <div id="header">
                 <div id="logo">
-                    
+                    <br/>
+                    <img src="images/logoRVB_UParisDescartes.png" height="75" width="350">
                 </div>
                 <div id="sloggan">
                     

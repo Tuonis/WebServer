@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style2.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Candidatures</title>
     </head>

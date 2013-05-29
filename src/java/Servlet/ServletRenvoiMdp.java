@@ -82,11 +82,10 @@ public class ServletRenvoiMdp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        //response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String email = request.getParameter("mail");
         String url2 = CANDIDAT + "mail=" + email;
-        out.println("URL : " + url2);
         ClientResource resource2 = null;
         try {// Preparer l'appel au service Web distant
             resource2 = new ClientResource(url2);
@@ -99,7 +98,7 @@ public class ServletRenvoiMdp extends HttpServlet {
                     + exc.getStatus().getDescription() + ") : "
                     + resource2.getResponseEntity().getText());
         }
-        RequestDispatcher rd2 = request.getRequestDispatcher("index.jsp?ref=renvoiMdp");
+        RequestDispatcher rd2 = request.getRequestDispatcher("index.jsp");
         rd2.forward(request, response);
     }
 

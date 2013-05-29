@@ -27,7 +27,7 @@
             <a href="ServletListePromotion">Déposer une candidature</a> <hr/>
         </li>
         <li>
-            <a href="ServletDeconnexion">Déconnexion</a> <hr/>
+            <a href="ServletDeconnexion">Déconnection</a> <hr/>
         </li>
     </c:otherwise>
 </c:choose>
