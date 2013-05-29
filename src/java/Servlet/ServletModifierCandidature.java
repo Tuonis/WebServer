@@ -23,7 +23,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
- *
+ * Servlet de modification de candidature
  * @author Kentish
  */
 public class ServletModifierCandidature extends HttpServlet {
@@ -80,7 +80,7 @@ public class ServletModifierCandidature extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>POST</code> method.
-     *
+     * Création d'une candidature
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -92,7 +92,7 @@ public class ServletModifierCandidature extends HttpServlet {
         PrintWriter out = response.getWriter();
         int val = Integer.parseInt(request.getParameter("choix"));
         switch (val) {
-            /*ce traitement va permettre de verifier l'identite de l'utilisateur et ses droits via les parametres 
+            /* ce traitement va permettre de verifier l'identite de l'utilisateur et ses droits via les parametres 
              * login et pass qu'il aura transmis via le formulaire useracess. On le redirige soit vers la page des 
              * produits s'il est identifie, soit vers une page d'erreur
              */

@@ -19,7 +19,7 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /**
- *
+ * Servlet permettant d'envoyer les informations d'une candidature vers la ressource
  * @author Tuonis
  */
 public class ServletCandidature extends HttpServlet {
@@ -55,7 +55,6 @@ public class ServletCandidature extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
      * <code>GET</code> method.
@@ -86,28 +85,26 @@ public class ServletCandidature extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        //response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        // Récupération des paramètres de la requête
         String idPromo = request.getParameter("promo");
-        //HttpSession session= request.getSession();
-        System.out.println("test dans servlet : " +request.getParameter("candidat"));
         int idCandidat = Integer.parseInt(request.getParameter("candidat"));
-        //int idCandidat = Integer.parseInt((String)session.getAttribute("id"));
         String mail = request.getParameter("mail");
         int idEtat = 7;
         String motivation = request.getParameter("motivation");
         Date dateCandidature = new Date();
-        java.sql.Date dateSQL = new java.sql.Date(dateCandidature.getYear(), dateCandidature.getMonth(), dateCandidature.getDate());
-        //String dateCandidature = request.getParameter("dateCandidature");
-        
+        java.sql.Date dateSQL = new java.sql.Date(dateCandidature.getYear(), dateCandidature.getMonth(), dateCandidature.getDate());        
         String url6 = CANDIDATURE;
+        
+        // Preparation l'appel au service Web distant
         ClientResource resource = new ClientResource(url6);
+        // Préparation du formulaire
         Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateSQL + "&mail=" + mail /*session.getAttribute("mail")*/);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
+        // Envoi à la ressource
         resource.post(rep);
+        // Redirection vers la page du candidat
         response.sendRedirect("index.jsp?ref=listeCandidatureByCandidat");
        
         

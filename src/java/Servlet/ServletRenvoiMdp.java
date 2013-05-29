@@ -17,7 +17,7 @@ import org.restlet.resource.ResourceException;
 import org.w3c.dom.Document;
 
 /**
- *
+ * Servlet de renvoi de mot de passe
  * @author Chanthavone
  */
 public class ServletRenvoiMdp extends HttpServlet {
@@ -72,7 +72,8 @@ public class ServletRenvoiMdp extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>POST</code> method.
-     *
+     * Appelé par demandeMdp.jsp
+     * Appelle la méthode doGet de la ressource CandidatResource
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

@@ -16,7 +16,7 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /**
- *
+ * Servlet d'inscription à une candidature
  * @author Chanthavone
  */
 public class ServletSaisieDeCandidature extends HttpServlet {
@@ -56,7 +56,7 @@ public class ServletSaisieDeCandidature extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>GET</code> method.
-     *
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -71,7 +71,9 @@ public class ServletSaisieDeCandidature extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>POST</code> method.
-     *
+     * Appelé par saisieCandidature.jsp
+     * Appelle la méthode doPost de la ressource CandidatureResource
+     * Envoie les informations dde la candidature au WebService
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -81,6 +83,7 @@ public class ServletSaisieDeCandidature extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        // Récupération des paramètres de la requête
         PrintWriter out = response.getWriter();
         String idPromo = request.getParameter("idPromo");
         String idCandidat = request.getParameter("idCandidat");
@@ -89,10 +92,13 @@ public class ServletSaisieDeCandidature extends HttpServlet {
         String dateCandidature = request.getParameter("dateCandidature");
         System.out.println(motivation);
         String url6 = CANDIDATURE;
+        // Preparation l'appel au service Web distant
         ClientResource resource = new ClientResource(url6);
+        // Préparation du formulaire
         Form form = new Form("idPromo=" + idPromo + "&idCandidat=" + idCandidat + "&idEtat=" + idEtat + "&motivation=" + motivation + "&dateCandidature=" + dateCandidature);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
+        // Envoi à la ressource
         resource.post(rep);
     }
 

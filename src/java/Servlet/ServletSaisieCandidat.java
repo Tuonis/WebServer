@@ -16,7 +16,7 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /**
- *
+ * Servlet de modification d'un candidat
  * @author Chanthavone
  */
 public class ServletSaisieCandidat extends HttpServlet {
@@ -71,7 +71,9 @@ public class ServletSaisieCandidat extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>POST</code> method.
-     *
+     * Appelé par saisieCandidat.jsp
+     * Appelle la méthode doPut de la ressource CandidatResource
+     * Envoie les informations du candidat au WebService
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -82,6 +84,7 @@ public class ServletSaisieCandidat extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        // Récupération des paramètres de la requête
         String id = request.getParameter("id");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
@@ -92,10 +95,13 @@ public class ServletSaisieCandidat extends HttpServlet {
         String competence = request.getParameter("competence");
         String situationPro = request.getParameter("situationPro");
         String url5 = CANDIDAT;
+        // Preparation l'appel au service Web distant
         ClientResource resource5 = new ClientResource(url5);
+        // Préparation du formulaire
         Form form = new Form("id=" + id + "&nom=" + nom + "&prenom=" + prenom + "&tel=" + tel + "&mail=" + mail1 + "&adresse=" + adresse + "&diplome=" + diplome + "&competence=" + competence + "&situationPro=" + situationPro);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
+        // Envoi à la ressource
         resource5.put(rep);
     }
 

@@ -17,7 +17,7 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /**
- *
+ * Servlet de confirmation d'inscription
  * @author Tuonis
  */
 public class ServletConfirmationInscription extends HttpServlet {
@@ -89,19 +89,20 @@ public class ServletConfirmationInscription extends HttpServlet {
         processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        // Récupération des paramètres de la requête
         String nom = request.getParameter("nom");
         String mdp = request.getParameter("mdp");
-        System.out.println("test du nom : "+nom);
-        System.out.println("test du mdp : "+mdp);
         String url5 = INSCRIPTION;
+        // Preparation l'appel au service Web distant
         ClientResource resource5 = new ClientResource(url5);
+        // Préparation du formulaire
         Form form = new Form("nom="+nom+"&mdp=" +mdp);
         form.encode(CharacterSet.UTF_8);
         Representation rep = form.getWebRepresentation();
+        // Envoi à la ressource
         resource5.put(rep);
+        // Redirection vers l'accueil
         response.sendRedirect("index.jsp?ref=accueil");
-        /*RequestDispatcher rd5 = request.getRequestDispatcher("index.jsp?ref=accueil");
-        rd5.forward(request, response);*/
     }
 
     /**

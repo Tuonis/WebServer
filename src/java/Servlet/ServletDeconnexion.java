@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * Servlet de déconnexion
  * @author Chanthavone
  */
 public class ServletDeconnexion extends HttpServlet {
@@ -24,6 +24,8 @@ public class ServletDeconnexion extends HttpServlet {
      * <code>GET</code> and
      * <code>POST</code> methods.
      *
+     * Fait expirer une session
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -34,8 +36,11 @@ public class ServletDeconnexion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            // Récupération de la session
             HttpSession session = request.getSession();
+            // Expiration de la session
             session.invalidate();
+            // Redirection vers la page d'accueil
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
 

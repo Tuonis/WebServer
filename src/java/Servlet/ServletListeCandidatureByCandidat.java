@@ -23,7 +23,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
- *
+ * Servlet permettant d'obtenir la liste des candidatures d'un candidat
  * @author Chanthavone
  */
 public class ServletListeCandidatureByCandidat extends HttpServlet {
@@ -78,7 +78,8 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>POST</code> method.
-     *
+     * Appelé par authentification.jsp
+     * Appelle la méthode doGet de la ressource CandidatResource
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -89,12 +90,14 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        // Récupération des paramètres de la requête
         String mail = request.getParameter("mail");
         String pass = request.getParameter("pass");
         String url = CANDIDATS + "email=" + mail;
         out.println("URL : " + url);
         ClientResource resource = null;
-        try {// Preparer l'appel au service Web distant
+        try {
+            // Preparer l'appel au service Web distant
             resource = new ClientResource(url);
             ChallengeResponse authentication = new ChallengeResponse(ChallengeScheme.HTTP_BASIC, mail, pass);
             resource.setChallengeResponse(authentication);
@@ -113,7 +116,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             request.setAttribute("adresse", node.getAttribute("adresse"));
             request.setAttribute("mail", node.getAttribute("mail"));
             
-
+            // Création de la session du candidat
             HttpSession session=request.getSession();
             session.setAttribute("dom", doc);
             session.setAttribute("id", node.getAttribute("id"));
@@ -125,6 +128,7 @@ public class ServletListeCandidatureByCandidat extends HttpServlet {
             rd.forward(request, response);
 
         } catch (ResourceException exc) {
+            // Si le candidat n'est pas trouvé, on envoie une erreur
             request.setAttribute("erreur", "Identifiants incorrects");
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp?ref=authentification");
             rd.forward(request, response);

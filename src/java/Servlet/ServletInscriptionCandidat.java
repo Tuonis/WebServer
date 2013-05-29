@@ -16,7 +16,7 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /**
- *
+ * Servlet d'inscription d'un candidat
  * @author Chanthavone
  */
 public class ServletInscriptionCandidat extends HttpServlet {
@@ -71,7 +71,8 @@ public class ServletInscriptionCandidat extends HttpServlet {
     /**
      * Handles the HTTP
      * <code>POST</code> method.
-     *
+     * Appelé par inscriptionCandidat.jsp
+     * Appelle la méthode doPost de CandidatRessource
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -82,6 +83,7 @@ public class ServletInscriptionCandidat extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        // Récupération des paramètres de la requête
         String nom2 = request.getParameter("nom");
         String prenom2 = request.getParameter("prenom");
         String tel2 = request.getParameter("telephone");
@@ -91,11 +93,15 @@ public class ServletInscriptionCandidat extends HttpServlet {
         String competence2 = request.getParameter("competence");
         String situationPro2 = request.getParameter("situationPro");
         String url6 = CANDIDAT;
+        // Preparation l'appel au service Web distant
         ClientResource resource6 = new ClientResource(url6);
+        // Préparation du formulaire
         Form form2 = new Form("nom=" + nom2 + "&prenom=" + prenom2 + "&tel=" + tel2 + "&mail=" + mail2 + "&adresse=" + adresse2 + "&diplome=" + diplome2 + "&competence=" + competence2 + "&situationPro=" + situationPro2);
         form2.encode(CharacterSet.UTF_8);
         Representation rep2 = form2.getWebRepresentation();
+        // Envoi à la ressource
         resource6.post(rep2);
+        // Redirection vers l'accueil
         response.sendRedirect("index.jsp?ref=accueil");
     }
 

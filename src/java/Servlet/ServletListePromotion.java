@@ -17,7 +17,7 @@ import org.restlet.resource.ResourceException;
 import org.w3c.dom.Document;
 
 /**
- *
+ * Servlet permettant d'obtenir la liste des promotions disponibles
  * @author Kentish
  */
 public class ServletListePromotion extends HttpServlet {
@@ -53,7 +53,6 @@ public class ServletListePromotion extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
      * <code>GET</code> method.
@@ -70,7 +69,8 @@ public class ServletListePromotion extends HttpServlet {
         PrintWriter out = response.getWriter();
         String url3 = CANDIDATURE;
         ClientResource resource3 = null;
-        try {// Preparer l'appel au service Web distant
+        try {
+            // Preparer l'appel au service Web distant
             resource3 = new ClientResource(url3);
             // Recuperer la reponse en arbre DOM
             DomRepresentation reponse = new DomRepresentation(resource3.get());
@@ -85,6 +85,7 @@ public class ServletListePromotion extends HttpServlet {
                     + exc.getStatus().getDescription() + ") : "
                     + resource3.getResponseEntity().getText());
         }
+        // Redirection vers la page de modification d'un candidat
         RequestDispatcher rd4 = request.getRequestDispatcher("index.jsp?ref=saisieCandidature");
         rd4.forward(request, response);
     }
