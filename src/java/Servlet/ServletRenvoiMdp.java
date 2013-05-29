@@ -22,7 +22,7 @@ import org.w3c.dom.Document;
  */
 public class ServletRenvoiMdp extends HttpServlet {
 
-    private final String CANDIDAT = "http://localhost:8080/WS_cmsl/candidats/";
+    private final String CANDIDAT = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/candidats/";
     
     /**
      * Processes requests for both HTTP

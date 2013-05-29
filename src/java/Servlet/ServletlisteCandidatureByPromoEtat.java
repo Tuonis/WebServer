@@ -26,9 +26,9 @@ import org.w3c.dom.NodeList;
  */
 public class ServletlisteCandidatureByPromoEtat extends HttpServlet {
     
-    private final String PROMOCANDIDATURE = "http://localhost:8080/WS_cmsl/candidatures/promotion=";
-    private final String ETATCANDIDATURE = "http://localhost:8080/WS_cmsl/candidatures/etat=";
-    private final String CANDIDATURE = "http://localhost:8080/WS_cmsl/candidatures";
+    private final String PROMOCANDIDATURE = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/promotion=";
+    private final String ETATCANDIDATURE = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/candidatures/etat=";
+    private final String CANDIDATURE = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/candidatures";
 
     /**
      * Processes requests for both HTTP

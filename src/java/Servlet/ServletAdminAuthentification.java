@@ -27,7 +27,7 @@ import org.w3c.dom.NodeList;
  */
 public class ServletAdminAuthentification extends HttpServlet {
 
-    private final String ADMIN = "http://localhost:8080/WS_cmsl/admin/";
+    private final String ADMIN = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/admin/";
 
     /**
      * Processes requests for both HTTP

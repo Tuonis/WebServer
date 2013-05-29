@@ -28,10 +28,10 @@ import org.w3c.dom.NodeList;
  */
 public class ServletModifierCandidature extends HttpServlet {
 
-    private final String PROMOTIONS = "http://localhost:8080/WS_cmsl/promotions";
-    private final String ETATS = "http://localhost:8080/WS_cmsl/etats";
-    private final String CANDIDATURE = "http://localhost:8080/WS_cmsl/candidatures";
-    private final String ETAT = "http://localhost:8080/WS_cmsl/etat/";
+    private final String PROMOTIONS = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/promotions";
+    private final String ETATS = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/etats";
+    private final String CANDIDATURE = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/candidatures";
+    private final String ETAT = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/etat/";
 
     /**
      * Processes requests for both HTTP

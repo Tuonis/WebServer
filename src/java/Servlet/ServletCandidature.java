@@ -24,7 +24,7 @@ import org.restlet.resource.ClientResource;
  */
 public class ServletCandidature extends HttpServlet {
 
-    private final String CANDIDATURE = "http://localhost:8080/WS_cmsl/candidature";
+    private final String CANDIDATURE = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/candidature";
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and

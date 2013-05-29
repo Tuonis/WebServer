@@ -28,7 +28,7 @@ import org.w3c.dom.NodeList;
  */
 public class ServletListeCandidatureByCandidat extends HttpServlet {
 
-    private final String CANDIDATS = "http://localhost:8080/WS_cmsl/candidats/";
+    private final String CANDIDATS = "http://miage-ng-dev.math-info.univ-paris5.fr:8080/WS_cmsl/candidats/";
     
     /**
      * Processes requests for both HTTP
